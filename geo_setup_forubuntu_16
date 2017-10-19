@@ -127,10 +127,6 @@ sudo gedit /etc/default/tomcat8
 
 sudo service tomcat8 restart
 
-# steam and dota
-sudo apt-get install steam
-
-
 # Android set the path in file called .bashrc in the home folder 
 
 #export ANDROID_HOME=$HOME/Android/sdk
