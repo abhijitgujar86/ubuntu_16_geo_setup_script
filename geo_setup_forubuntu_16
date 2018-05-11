@@ -16,6 +16,7 @@ sudo apt-get install synaptic
 sudo apt-get install python-pip
 
 sudo apt-get update
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 #java  
 java -version
