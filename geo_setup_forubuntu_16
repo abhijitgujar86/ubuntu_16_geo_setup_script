@@ -15,7 +15,7 @@ sudo apt-get install aptitude
 sudo aptitude install unzip
 sudo apt-get install synaptic
 sudo apt-get install python-pip
-sudo apt-get install qtcreator pyqt5-dev-tools
+
 sudo apt-get update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
@@ -116,4 +116,19 @@ sudo service tomcat8 restart
 #export ANDROID_HOME=$HOME/Android/sdk
 #export PATH=$PATH:$ANDROID_HOME/tools
 #export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
+
+# QGIS 3.0.2
+sudo add-apt-repository "deb     https://qgis.org/debian bionic main"
+sudo add-apt-repository "deb-src https://qgis.org/debian bionic main"
+wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+gpg --fingerprint CAEB3DC3BDF7FB45
+gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
+
+
+
+
+
 
