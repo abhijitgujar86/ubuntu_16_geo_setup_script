@@ -15,7 +15,7 @@ sudo apt-get install aptitude
 sudo aptitude install unzip
 sudo apt-get install synaptic
 sudo apt-get install python-pip
-
+sudo apt-get install qtcreator pyqt5-dev-tools
 sudo apt-get update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
