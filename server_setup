@@ -1,0 +1,108 @@
+# set up apache wsgi server for pyhon 3 
+
+# step 1 : become root user 
+
+sudo bash
+su
+
+# step 2 :  install pre requisite 
+
+apt-get update
+apt-get install libapache2-mod-wsgi python-dev
+a2enmod wsgi
+
+
+# step 3 :  Create a Flask app
+
+
+cd /var/www
+mkdir FlaskApp
+cd FlaskApp
+mkdir FlaskApp
+cd FlaskApp
+mkdir static templates
+gedit __init__.py
+
+from flask import Flask
+app = Flask(__name__)
+@app.route("/")
+def hello():
+    return "Please, please work!"
+if __name__ == "__main__":
+    app.run()
+
+
+# step 4 : Install Pip and Flask
+
+apt-get install -y python3-pip
+apt-get install -y python3-venv
+python3 -m venv yourenvironment
+
+
+# step 5 : activate your virtual env and set it up 
+
+source yourenvironment/bin/activate
+pip3 install Flask
+pip3 install --upgrade --user travis pip setuptools wheel virtualenv
+
+python __init__.py
+
+
+#step 6 : Configure and Enable Your Site
+
+gedit /etc/apache2/sites-available/FlaskApp.conf
+
+
+<VirtualHost *:80>
+        ServerName mywebsite.com
+        ServerAdmin admin@mywebsite.com
+        WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+        <Directory /var/www/FlaskApp/FlaskApp/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        Alias /static /var/www/FlaskApp/FlaskApp/static
+        <Directory /var/www/FlaskApp/FlaskApp/static/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        WSGIDaemonProcess pylons python-home=/var/www/FlaskApp/yourenvironment
+</VirtualHost>
+
+#  Enable the virtual host with the following command:
+
+
+a2ensite FlaskApp
+
+
+
+# step 7 Create the .wsgi file
+
+
+cd /var/www/FlaskApp
+gedit flaskapp.wsgi
+#!/usr/bin/python                                                                
+
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/FlaskApp/")
+
+from FlaskApp import app as application
+application.secret_key = 'Add your secret key'
+
+
+
+service apache2 restart
+
+
+
+
+
+
+
+
+
