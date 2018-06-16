@@ -96,6 +96,8 @@ sudo apt-get update
 sudo apt-get upgrade
 #sudo apt-get install postgresql-10 pgadmin4 
 #sudo apt-get install postgresql-9.6 pgadmin4 
+# postgis installtion ...
+# sudo apt-get install postgresql-9.6-postgis-2.3
 
 
 
