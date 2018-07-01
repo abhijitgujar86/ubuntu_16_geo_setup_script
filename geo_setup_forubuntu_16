@@ -20,12 +20,42 @@ sudo apt-get install python3-pip python3-dev python-virtualenv -y
 apt-get install software-properties-common python-software-properties -y
 
 
-
 # install chrome 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt-get update 
 sudo apt-get install google-chrome-stable
+
+
+x="lsb_release -c --short"
+eval $x
+OS_VER=`eval $x`
+
+if [ "$OS_VER" = "xenial" ]; then
+	echo "Installing QGIS 3  for ubuntu 16"
+	sudo add-apt-repository "deb     https://qgis.org/debian xenial main"
+	sudo add-apt-repository "deb-src https://qgis.org/debian xenial main"
+	wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+	gpg --fingerprint CAEB3DC3BDF7FB45
+	gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+	sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
+
+
+elif [ "$OS_VER" = "bionic" ]; then
+
+	echo "Installing QGIS 3  for ubuntu 18"
+	sudo add-apt-repository "deb     https://qgis.org/debian bionic main"
+	sudo add-apt-repository "deb-src https://qgis.org/debian bionic main"
+	wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+	gpg --fingerprint CAEB3DC3BDF7FB45
+	gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+	sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
+else
+
+	echo "Unkown parameter"
+
+fi
+
 
 
 sudo apt-get update
@@ -124,24 +154,6 @@ sudo service tomcat8 restart
 #export ANDROID_HOME=$HOME/Android/sdk
 #export PATH=$PATH:$ANDROID_HOME/tools
 #export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-
-
-# QGIS 3 for ubuntu 18
-sudo add-apt-repository "deb     https://qgis.org/debian bionic main"
-sudo add-apt-repository "deb-src https://qgis.org/debian bionic main"
-wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
-gpg --fingerprint CAEB3DC3BDF7FB45
-gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
-sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
-
-# QGIS 3  for ubuntu 16
-sudo add-apt-repository "deb     https://qgis.org/debian xenial main"
-sudo add-apt-repository "deb-src https://qgis.org/debian xenial main"
-wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
-gpg --fingerprint CAEB3DC3BDF7FB45
-gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
-sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
 
 
 
