@@ -6,6 +6,7 @@
 
 # update & basics
 sudo apt-get update
+sudo apt install python3-pip
 sudo apt-get install build-essential libgmp3-dev python3-dev
 sudo apt-get install unrar
 sudo apt-get install curl
