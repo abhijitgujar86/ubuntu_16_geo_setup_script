@@ -16,6 +16,7 @@ sudo apt-get install wget -y
 sudo apt-get install aptitude -y
 sudo aptitude install unzip -y
 sudo apt-get install synaptic -y
+sudo apt-get install python3-pip python3-dev python-virtualenv -y
 
 
 
