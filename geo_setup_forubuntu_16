@@ -28,10 +28,9 @@ sudo apt-get update
 sudo apt-get install google-chrome-stable
 
 
-
-
 sudo apt-get update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
 
 #java  
 java -version
@@ -68,11 +67,9 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 
 
-
 # some node packages 
 sudo npm install gulp -g
 sudo npm install bower -g
-
 
 
 # remmina remote desktop 
@@ -86,7 +83,6 @@ sudo apt-get update
 sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 
 
-
 # Atom
 sudo add-apt-repository ppa:webupd8team/atom
 sudo apt-get update
@@ -94,7 +90,6 @@ sudo apt-get install atom
 
 
 # postgres 9.6
-
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $bionic-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get install wget ca-certificates
@@ -105,7 +100,6 @@ sudo apt-get upgrade
 #sudo apt-get install postgresql-9.6 pgadmin4 
 # postgis installtion ...
 # sudo apt-get install postgresql-9.6-postgis-2.3
-
 
 
 # tomcat8
@@ -133,13 +127,23 @@ sudo service tomcat8 restart
 
 
 
-# QGIS 3.0.2
+# QGIS 3 for ubuntu 18
 sudo add-apt-repository "deb     https://qgis.org/debian bionic main"
 sudo add-apt-repository "deb-src https://qgis.org/debian bionic main"
 wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
 gpg --fingerprint CAEB3DC3BDF7FB45
 gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
 sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
+
+# QGIS 3  for ubuntu 16
+sudo add-apt-repository "deb     https://qgis.org/debian xenial main"
+sudo add-apt-repository "deb-src https://qgis.org/debian xenial main"
+wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+gpg --fingerprint CAEB3DC3BDF7FB45
+gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+sudo apt-get update && sudo apt-get install qgis python-qgis qgis-plugin-grass
+
+
 
 
 
